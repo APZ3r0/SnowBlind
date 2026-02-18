@@ -15,11 +15,13 @@ class SnowEliminator:
         # so importing this module does not immediately claim GPIO pins.
         self.se_drive = Robot(left=(17, 18), right=(27, 22))
         self.vaporizer = OutputDevice(23)
+        self.brine_pump = OutputDevice(26)  # Rear brine pump via SSR on GPIO 26
         self.safety_perimeter = DistanceSensor(echo=25, trigger=24, threshold_distance=0.3)
 
     def safety_stop(self):
         """Instant shutdown of all hazardous systems."""
         self.vaporizer.off()
+        self.brine_pump.off()
         self.se_drive.stop()
         # FIX (Bug 2): Latch the stopped state so the main loop cannot
         # re-activate the robot after a safety breach without an explicit restart.
@@ -58,10 +60,12 @@ class SnowEliminator:
                 status = self.analyze_scan(scan)
 
                 if status == "CLEAR":
-                    self.vaporizer.on()  # HEAT ON
+                    self.vaporizer.on()   # HEAT ON
+                    self.brine_pump.on()  # BRINE ON (rear spray)
                     self.se_drive.forward(speed=0.3)  # Slow, efficient pace
                 else:
-                    self.vaporizer.off()  # SAFETY HEAT OFF
+                    self.vaporizer.off()   # SAFETY HEAT OFF
+                    self.brine_pump.off()  # BRINE OFF while turning
                     self.se_drive.right(speed=0.5)  # Pivot to find clear path
                     time.sleep(1)
 
@@ -78,6 +82,7 @@ class SnowEliminator:
         self.lidar.stop()
         self.lidar.disconnect()
         self.vaporizer.off()
+        self.brine_pump.off()
         self.se_drive.stop()
 
 
