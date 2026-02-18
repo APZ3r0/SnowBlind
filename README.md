@@ -2,6 +2,38 @@
 
 An autonomous snow-elimination robot (SE-5000) built on a Raspberry Pi. It uses LiDAR for obstacle detection, an induction coil vaporizer for snow removal, and an ultrasonic safety perimeter to halt all systems if a person or object comes too close.
 
+## Materials
+
+### Computing
+- Raspberry Pi (any model with GPIO header, Pi 3B+ or later recommended)
+- MicroSD card (8 GB+ with Raspberry Pi OS)
+
+### Drive System
+- 2× DC gear motors (left and right)
+- Motor driver board (e.g. L298N or TB6612FNG) — bridges GPIO signals to motor power
+- Robot chassis / frame
+- 4× wheels or tank treads
+
+### Sensors
+- RPLidar A1/A2/A3 (360° laser rangefinder, USB)
+- HC-SR04 ultrasonic distance sensor
+
+### Snow Removal
+- Induction coil vaporizer / heating element
+- Solid State Relay (SSR) — rated for the vaporizer's voltage and current draw
+
+### Power
+- Main battery pack for motors and vaporizer (voltage matched to your motors/SSR)
+- 5 V regulated supply or power bank for the Raspberry Pi
+- Inline fuse on the main battery line
+
+### Wiring & Misc
+- Jumper wires / GPIO ribbon cable
+- USB-A to Micro-USB cable (for RPLidar)
+- Mounting hardware, standoffs, zip ties
+
+---
+
 ## Hardware
 
 | Component | Interface |
