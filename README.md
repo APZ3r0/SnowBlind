@@ -22,6 +22,15 @@ An autonomous snow-elimination robot (SE-5000) built on a Raspberry Pi. It uses 
 - Induction coil vaporizer / heating element
 - Solid State Relay (SSR) — rated for the vaporizer's voltage and current draw
 
+### Rear Brine System
+- Brine tank / reservoir (salt-water solution, mounted to chassis)
+- 12 V DC submersible or inline pump
+- Solenoid valve — GPIO-controlled to start/stop flow
+- SSR or motor driver channel to switch the pump from GPIO
+- Rear-mounted spray bar or nozzle(s)
+- Food-grade silicone tubing + hose clamps
+- Brine mix: approx. 23% sodium chloride (NaCl) by weight for optimal freeze point depression
+
 ### Power
 - Main battery pack for motors and vaporizer (voltage matched to your motors/SSR)
 - 5 V regulated supply or power bank for the Raspberry Pi
