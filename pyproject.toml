@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snowblind"
+version = "0.1.0"
+description = "Offline control-decision simulator for a snow-removal robot"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "APZ3r0"}]
+dependencies = []
+
+[project.scripts]
+snowblind = "snowblind.cli:main"
+
+[tool.setuptools]
+packages = ["snowblind"]
